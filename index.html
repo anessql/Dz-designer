@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Bot Web App</title>
+  <style>
+    body {
+      display: flex;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .menu {
+      width: 200px;
+      background: #2c3e50;
+      color: white;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <h2>Menu</h2>
+    <a href="#" id="tickets">Tickets</a>
+    <a href="#" id="open-ticket">Open Ticket</a>
+  </div>
+  <div class="content">
+    <h1>Welcome to the Telegram Bot Web App</h1>
+    <p>Use the menu to navigate.</p>
+    <div id="dynamic-content"></div>
+  </div>
+  <script>
+    document.getElementById('tickets').addEventListener('click', () => {
+      document.getElementById('dynamic-content').innerHTML = '<h2>Opened Tickets</h2>';
+    });
+    document.getElementById('open-ticket').addEventListener('click', () => {
+      document.getElementById('dynamic-content').innerHTML = `
+        <h2>Open a New Ticket</h2>
+        <form id="ticket-form">
+          <input type="text" id="ticket-title" placeholder="Ticket Title" required />
+          <button type="submit">Submit</button>
+        </form>
+      `;
+      document.getElementById('ticket-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Ticket submitted!');
+      });
+    });
+  </script>
+</body>
+</html>
